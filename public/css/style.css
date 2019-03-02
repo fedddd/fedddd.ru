@@ -1,0 +1,75 @@
+\\\body div{border: 1px solid green}
+
+.header{height: 100px; text-align: center; background: grey; color:#fff}
+.center{min-height: 1000px;}
+.footer{
+	height: 50px;
+    background:grey;
+}
+.left{width: 150px}
+.topmenu{}
+
+
+.dropdown-custom > .dropdown-menu {
+ min-width:220px;
+ padding:10px;
+}
+
+
+
+
+
+/*Карусель слайдер*/
+ .carousel-inner h2{
+        margin: 0;     
+        color: #666;
+        padding-top: 90px;
+        font-size: 52px;
+        font-family: "trebuchet ms", sans-serif;    
+    }
+    .item {
+        background: #aaa; 
+        text-align: center;
+        height: 300px !important;
+    }
+	
+	/*
+	.item:nth-child(1)  {
+	background: red;
+	}
+	.item:nth-child(2) {
+	background: blue;
+	}
+	.item:nth-child(3) {
+	background: green;
+	}
+	.item:nth-child(4) {
+	background: #dfa ;
+	}
+	.item:nth-child(5) {
+	background: #ddd;
+	}
+	*/
+	
+    .carousel{
+        margin-top: 20px;
+    }
+	.img1{
+		width:150px;
+	}
+	
+	.name{
+	display:block;
+	width: 100%;
+	margin-bottom:20px;
+	}
+	.msg{
+	white-space: pre-wrap;
+	
+	}
+	.cod{
+	white-space: pre-wrap;
+	background-color: #dadada;
+	}
+	
+	
