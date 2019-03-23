@@ -8,13 +8,11 @@ class Menu extends Model
 {
 protected $table = 'menu';
 
-
-
-public function getMenu(){
+public function getMenu()
+{
 $menu = self::all();
 
 return $menu;
 }
-
    
 }

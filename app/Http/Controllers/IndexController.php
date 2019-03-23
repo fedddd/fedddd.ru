@@ -8,28 +8,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-
-
-
-
 class IndexController extends Controller
 {
 
-   public function index(){
+ public function index()
+ {
+   $menu = $this->insertMenu();
    
-		
-		$menu = $this->insertMenu();
-		
-
-		
-		return view('post.index', ['menu'=>$menu ]);
-
-
-	}   
-	
-	
-	
-	
-	
+   return view('post.index', ['menu'=>$menu ]);
+ }   
 	
 }

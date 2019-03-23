@@ -5,8 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 
-class PostController extends Controller
+class DnevnikController extends Controller
 {
+
+public function getDay()
+{
+	return 'тест';
+}
+
+
+
 
 public function Post(Post $Post, Request $request )
 {

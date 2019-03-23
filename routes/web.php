@@ -17,6 +17,10 @@ Route::get('/', function () {
 */
 
 
+Route::group(['prefix' => 'dnevnik'], function(){
+	Route::get('/', ['as' => 'dnevnik', 'uses' => 'DnevnikController@getDay']);
+});	
+
 
 Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
 
@@ -44,6 +48,10 @@ Route::get('/{tema}/{podtema}/{id}', ['as' => 'posts', 'uses' => 'PostController
 Route::get('/{tema}/{id}', ['as' => 'posts', 'uses' => 'PostController@Post'])->where(['tema' => '[a-z]+', 'id' => '[0-9]+']);
 
 });
+
+
+
+
 
 //Auth::routes();
 //Route::auth();
