@@ -3,11 +3,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
+                    <input v-model="id" v-on:keyup.enter="changeId">
+                    <div class="panel-heading">{{ info.name }}</div>
 
                     <div class="panel-body">
-                        I'm an example component!
+                        {{ info.msg }}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -16,8 +18,29 @@
 
 <script>
     export default {
+    data() {
+    return {
+      info: null,
+      id: 1
+    };
+    },
         mounted() {
-            console.log('Component mounted.')
-        }
+            console.log('Component mounted.');
+            axios
+      .get('/api/dnevnik/' + this.id)
+      .then(response => (this.info = response.data));
+        },
+
+   methods: {
+    changeId: function () {
+           axios
+      .get('/api/dnevnik/' + this.id)
+      .then(response => (this.info = response.data))
+      .catch(response =>(this.info.msg = 'страница не найдена',this.info.name= 'страница не найдена')); 
+    }
+  }
+
+
+
     }
 </script>

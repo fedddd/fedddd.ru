@@ -30,8 +30,8 @@ Route::group(['prefix' => 'admin'], function(){
 
    Route::get('/insert', ['as' => 'Insert', 'middleware' =>'auth', 'uses' => 'admin\InsertController@insertPost']);
    Route::post('/insert', ['as' => 'Insert', 'middleware'=>'auth', 'uses' => 'admin\InsertController@insertPost']);
-   Route::get('/update/{id}', ['as' => 'update', 'middleware' =>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);;
-   Route::post('/update/{id}', ['as' => 'update', 'middleware'=>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);;
+   Route::get('/update/{id}', ['as' => 'update', 'middleware' =>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);
+   Route::post('/update/{id}', ['as' => 'update', 'middleware'=>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);
   
    
   Route::auth(); 
