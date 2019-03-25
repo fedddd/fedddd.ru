@@ -47,7 +47,10 @@
 @endif
 
 @endforeach
-				
+
+<li>
+  <a href="/dnevnik">Дневник</a>
+</li>				
 
 </ul>
 

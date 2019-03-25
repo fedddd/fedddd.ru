@@ -1,10 +1,11 @@
-\\\body div{border: 1px solid green}
+
 
 .header{height: 100px; text-align: center; background: grey; color:#fff}
 .center{min-height: 1000px;}
 .footer{
 	height: 50px;
     background:grey;
+    padding: 4px;
 }
 .left{width: 150px}
 .topmenu{}
@@ -68,8 +69,22 @@
 	
 	}
 	.cod{
-	white-space: pre-wrap;
+	/*white-space: pre-wrap;*/
 	background-color: #dadada;
+	}
+
+	.cod pre{
+		display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: transparent;
+        border: 0px;
+        border-radius: 0px;
 	}
 	
 	

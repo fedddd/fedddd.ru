@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Dnevnik;
 
 class AjaxDnevnikController extends Controller
 {
 
-public function getDay(Post $Post, Request $request)
+public function getDay(Dnevnik $Dnevnik, Request $request)
 {
  $id = $request->route('id');				
- $post = $Post->getPost($id);
+ $post = $Dnevnik->getPost($id);
  		
  return $post[0];
 }

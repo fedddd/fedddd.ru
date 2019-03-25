@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Dnevnik extends Model
 {
-protected $table = 'post';
+protected $table = 'dnevnik';
 public $timestamps = false;
 
 
@@ -16,7 +16,7 @@ public $timestamps = false;
 public function getPost($id)
 {
 
-$post = self::where('id', $id)->get();
+$post = self::where('id_dnevnik', $id)->get();
 
 return $post;
 }

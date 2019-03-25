@@ -9,8 +9,9 @@ class DnevnikController extends Controller
 {
 
 public function getDay()
-{
-	return 'тест';
+{ 
+	$menu = $this->insertMenu();
+	return view('dnevnik.dnevnik', ['menu'=>$menu ]);
 }
 
 

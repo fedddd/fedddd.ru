@@ -7,7 +7,7 @@
 				
 				<div class="msg col-xs-6">{!!$value->msg!!}</div>
 				
-				<div class="cod col-xs-6">{{$value->cod}}</div>
+				<div class="cod col-xs-6"><pre>{{$value->cod}}</pre></div>
 				
 				@endforeach
 	

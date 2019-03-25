@@ -14,9 +14,7 @@
     </head>
     <body>
        
-<div id="app">				
-<example></example>				
-</div>				
+			
  				
 <div class = "container-fluid">
     <div class="header row">
@@ -67,7 +65,7 @@
 	
 	
     <div class="footer row">
-	© fedddd.ru 2017
+	© fedddd.ru 2017 - <?=date("Y")?>
 	</div>
 	
 </div>
