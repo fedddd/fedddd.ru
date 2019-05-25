@@ -32,13 +32,10 @@ Route::group(['prefix' => 'admin'], function(){
    Route::post('/insert', ['as' => 'Insert', 'middleware'=>'auth', 'uses' => 'admin\InsertController@insertPost']);
    Route::get('/update/{id}', ['as' => 'update', 'middleware' =>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);
    Route::post('/update/{id}', ['as' => 'update', 'middleware'=>'auth', 'uses' => 'admin\InsertController@updatePost'])->where(['id' => '[0-9]+']);
-  
+  Route::get('/dnevnik', ['as' => 'dnevnikAdmin', 'middleware'=>'auth', 'uses' => 'admin\DnevnikAdminController@getDnevnikAdmin']);
    
   Route::auth(); 
-   
-
-   
-   
+      
 });
 
 Route::group(['prefix' => 'post'], function(){

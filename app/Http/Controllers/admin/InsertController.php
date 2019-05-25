@@ -10,59 +10,40 @@ class InsertController extends Controller
 {
     public function insertPost(Post $post, Request $request)
 	{
-	
-	
-	
-	
-	
-	
-	//  $post = new Post;
-	  // $post = Post::All();
+
 	  if ($request->isMethod ('post')){
 	  
 	  $this->validate($request, ['name' => 'required'] );
-	  
-	  
-	  
+	  	  	  
 	  $post->name = $request->input('name');
 	  if($request->input('msg'))$post->msg = $request->input('msg');
 	  if($request->input('cod'))$post->cod = $request->input('cod');
 	  $post->tema = $request->input('tema');
 	  $post->podtema = $request->input('podtema');
 	 
-	 //dd($post->tema);
 	  $post->save();
 	  
 	  return redirect('/');
 	}
 	  $menu = $this->insertMenu();
-	 //âñòàâêà çíà÷åíèÿ selected â ìàññèâ ìåíþ  
-	  foreach($menu as $key => $value){
-	 
-	  $menu[$key]['selected'] = "";
-	  if($post->tema == $value['section_id']){
-	    $menu[$key]['selected'] = "selected";
-	  }
-	  if(isset($value['parent'])){
-	     foreach($value['parent'] as $item => $parent){
-		   $menu[$key]['parent'][$item]['selected'] = "";
-		      if($post->podtema == $parent['section_id']){
-	             $menu[$key]['parent'][$item]['selected'] = "selected";
-	          }
-		 }
-	  
-	  }
+	 //Ð²ÑÑ‚Ð°Ð²ÐºÐ° Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ selected Ð² Ð¼Ð°ÑÑÐ¸Ð² Ð¼ÐµÐ½ÑŽ  
+	  foreach($menu as $key => $value){	 
+	    $menu[$key]['selected'] = "";
+	    if($post->tema == $value['section_id']){
+	      $menu[$key]['selected'] = "selected";
+	    }
+	    if(isset($value['parent'])){
+	       foreach($value['parent'] as $item => $parent){
+		     $menu[$key]['parent'][$item]['selected'] = "";
+		     if($post->podtema == $parent['section_id']){
+	              $menu[$key]['parent'][$item]['selected'] = "selected";
+	         }
+		   }	  
+	    }
 	 } 
-	 
-	  
-	  
-	  //dd($menu); 
-	   return view('login.insert', ['menu'=>$menu]);
-	  
+	 	  
+	 return view('login.insert', ['menu'=>$menu]);	  
 	}
-	
-	
-	
 	
 	
 	
@@ -72,49 +53,42 @@ class InsertController extends Controller
 	
 	 $post = $post->find($id);
 	
-	
-	
-	
-
-	  if ($request->isMethod ('post')){
-	  
-	  $this->validate($request, ['name' => 'required']);
-	  
-	  
-	  
-	  $post->name = $request->input('name');
-	  if($request->input('msg'))$post->msg = $request->input('msg');
-	  if($request->input('cod'))$post->cod = $request->input('cod');
-	  $post->tema = $request->input('tema');
-	  $post->podtema = $request->input('podtema');
+	 if ($request->isMethod ('post')){
 	 
-	 //dd($post->tema);
-	  $post->save();
-	  
-	  return redirect('/');
-	}
+	   $this->validate($request, ['name' => 'required']);
+	   	   	   
+	   $post->name = $request->input('name');
+
+	   if($request->input('msg'))$post->msg = $request->input('msg');
+	   if($request->input('cod'))$post->cod = $request->input('cod');
+
+	   $post->tema = $request->input('tema');
+	   $post->podtema = $request->input('podtema');
+
+	   $post->save();
+	   
+	   return redirect('/');
+	 }
 	  $menu = $this->insertMenu();
 	  
 	 
-	//âñòàâêà çíà÷åíèÿ selected â ìàññèâ ìåíþ  
-	  foreach($menu as $key => $value){
+	//Ð²ÑÑ‚Ð°Ð²ÐºÐ° Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ selected Ð² Ð¼Ð°ÑÑÐ¸Ð² Ð¼ÐµÐ½ÑŽ  
+	 foreach($menu as $key => $value){
 	 
-	  $menu[$key]['selected'] = "";
-	  if($post->tema == $value['section_id']){
-	    $menu[$key]['selected'] = "selected";
-	  }
-	  if(isset($value['parent'])){
-	     foreach($value['parent'] as $item => $parent){
-		   $menu[$key]['parent'][$item]['selected'] = "";
-		      if($post->podtema == $parent['section_id']){
-	             $menu[$key]['parent'][$item]['selected'] = "selected";
-	          }
-		 }
-	  
-	  }
+	   $menu[$key]['selected'] = "";
+	   if($post->tema == $value['section_id']){
+	     $menu[$key]['selected'] = "selected";
+	   }
+	   if(isset($value['parent'])){
+	      foreach($value['parent'] as $item => $parent){
+		    $menu[$key]['parent'][$item]['selected'] = "";
+		       if($post->podtema == $parent['section_id']){
+	              $menu[$key]['parent'][$item]['selected'] = "selected";
+	           }
+		  }	  
+	   }
 	 }
 	  
-	  //dd($menu); 
 	   return view('login.insert', ['menu'=>$menu, 'post'=>$post]);
 	   
 }

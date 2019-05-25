@@ -8,7 +8,7 @@
 
   <fieldset class="form-group">
     <label for="name">Название</label>
-    <input type="text" class="form-control" id="name" name="name" value = "{!!$post->name or ''!!}" placeholder="название статьи">
+    <input type="text" class="form-control" id="name" name="name" value = "{!!$post->name??''!!}" placeholder="название статьи">
   </fieldset>
   
   
@@ -43,13 +43,13 @@
   
   <fieldset class="form-group">
     <label for="msg">Содержание</label>
-    <textarea class="form-control" id="msg" name="msg">{!!$post->msg or ''!!}</textarea>
+    <textarea class="form-control" id="msg" name="msg">{!!$post->msg ?? ''!!}</textarea>
   </fieldset>
   <fieldset class="form-group">
   
   <fieldset class="form-group">
     <label for="msg">Код</label>
-    <textarea class="form-control" id="cod" name="cod">{!!$post->cod or ''!!}</textarea>
+    <textarea class="form-control" id="cod" name="cod">{!!$post->cod ?? ''!!}</textarea>
   </fieldset>
   <fieldset class="form-group">
 

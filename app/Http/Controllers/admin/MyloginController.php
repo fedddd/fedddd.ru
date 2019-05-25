@@ -8,21 +8,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
-
-
-
-
 class MyloginController extends Controller
 {
 
-   public function login(){
-   
-
-		return view('login.login');
-
-
-	}   
-	
-	
-	
+ public function login()
+ {
+  
+	return view('login.login');
+ }   
+		
 }
