@@ -9,12 +9,35 @@
                     <div class="panel-body">
                         {{ info.msg }}
                     </div>
+                    <div class="calendar">
+                      <div class="calendar-day" v-for="n in 42">{{n}}</div>
+                      
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 </template>
+<style scoped>
+  .calendar{
+    width: 700px;
+    height: 600px;
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(6,1fr);
+    grid-column-gap: 0px;
+    grid-row-gap:0px;
+  }
+  .calendar-day{
+    border:1px solid;
+    margin: -0.5px;
+  }
+  .calendar-day:hover{
+    border:2px solid blue;
+  }
+  
+</style>
 
 <script>
     export default {
