@@ -3,7 +3,7 @@
 @section('post')
 	            <h3>Дневник</h3>
 <div id="app">				
-<dnevnik></dnevnik>				
+<router-view></router-view>
 </div>	
 	
 @stop		

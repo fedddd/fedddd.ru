@@ -7,7 +7,41 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+var Vue = require('vue');
+var VueRouter = require('vue-router').default;
+Vue.use(VueRouter);
+
+/*import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);*/ 
+
+
+import dnevnik from './components/DnevnikComponent.vue';
+import test from './components/TestComponent.vue';
+
+
+
+
+const router = new VueRouter({
+   // mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'dnevnik',
+            component: dnevnik
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: test
+        }
+        
+        
+    ]
+});
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +49,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('dnevnik', require('./components/DnevnikComponent.vue'));
+//Vue.component('dnevnik', require('./components/DnevnikComponent.vue'));
+//Vue.component('test', require('./components/TestComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+
+new Vue({
+  el: '#app',
+  router: router
+})
