@@ -10,7 +10,9 @@
                         {{ info.msg }}
                     </div>
                     <div class="calendar">
-                      <div class="calendar-day" v-for="n in 42">{{n}}</div>
+                      <div class="calendar-day" v-for="n in 42">                        
+                        <router-link to="/dnevnik/123">{{n}}</router-link>
+                      </div>
                       
                     </div>
 

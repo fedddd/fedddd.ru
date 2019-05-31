@@ -1083,8 +1083,10 @@ module.exports = __webpack_require__(52);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_TestComponent_vue__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_TestComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_TestComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1106,6 +1108,7 @@ Vue.use(VueRouter);*/
 
 
 
+
 var router = new VueRouter({
     mode: 'history',
     routes: [{
@@ -1113,9 +1116,13 @@ var router = new VueRouter({
         name: 'dnevnik',
         component: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a
     }, {
-        path: '/dnevnik/test',
-        name: 'test',
-        component: __WEBPACK_IMPORTED_MODULE_1__components_TestComponent_vue___default.a
+        path: '/dnevnik/:day',
+        name: 'day',
+        component: __WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue___default.a
+    }, {
+        path: '/dnevnik/:day/health',
+        name: 'health',
+        component: __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue___default.a
     }]
 });
 
@@ -1131,7 +1138,7 @@ var router = new VueRouter({
 
 new Vue({
     el: '#app',
-    components: { dnevnik: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a },
+    components: { Dnevnik: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a },
     router: router
 });
 
@@ -47547,6 +47554,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47636,9 +47645,16 @@ var render = function() {
             "div",
             { staticClass: "calendar" },
             _vm._l(42, function(n) {
-              return _c("div", { staticClass: "calendar-day" }, [
-                _vm._v(_vm._s(n))
-              ])
+              return _c(
+                "div",
+                { staticClass: "calendar-day" },
+                [
+                  _c("router-link", { attrs: { to: "/dnevnik/123" } }, [
+                    _vm._v(_vm._s(n))
+                  ])
+                ],
+                1
+              )
             }),
             0
           )
@@ -47658,15 +47674,33 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47683,7 +47717,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/TestComponent.vue"
+Component.options.__file = "resources/assets/js/components/dnevnik/DayComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -47692,9 +47726,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dd7c1338", Component.options)
+    hotAPI.createRecord("data-v-ef215f5c", Component.options)
   } else {
-    hotAPI.reload("data-v-dd7c1338", Component.options)
+    hotAPI.reload("data-v-ef215f5c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -47705,7 +47739,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47720,36 +47754,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      info: null,
-      id: 1
+      day: "123"
     };
   },
-  mounted: function mounted() {
-    var _this = this;
 
-    console.log('Component mounted.');
-    axios.get('/api/dnevnik/' + this.id).then(function (response) {
-      return _this.info = response.data;
-    });
-  },
+  created: function created() {
+    var day = this.$route.params.day;
 
-
-  methods: {
-    changeId: function changeId() {
-      var _this2 = this;
-
-      axios.get('/api/dnevnik/' + this.id).then(function (response) {
-        return _this2.info = response.data;
-      }).catch(function (response) {
-        return _this2.info.msg = 'страница не найдена', _this2.info.name = 'страница не найдена';
-      });
-    }
+    this.day = day;
   }
 
 });
 
 /***/ }),
-/* 51 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47757,7 +47775,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._v("\n    test test test\n")
+    _vm._v("\n    " + _vm._s(_vm.day) + "\n")
   ])
 }
 var staticRenderFns = []
@@ -47766,15 +47784,106 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dd7c1338", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-ef215f5c", module.exports)
   }
 }
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports) {
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+var disposed = false
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/dnevnik/HealthComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-96282000", Component.options)
+  } else {
+    hotAPI.reload("data-v-96282000", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      day: "123"
+    };
+  },
+
+  created: function created() {
+    var day = this.$route.params.day;
+
+    this.day = day;
+  }
+
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _vm._v("\n    health: " + _vm._s(_vm.day) + "\n")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-96282000", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -17,9 +17,9 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);*/ 
 
 
-import dnevnik from './components/DnevnikComponent.vue';
-import test from './components/TestComponent.vue';
-
+import Dnevnik from './components/DnevnikComponent.vue';
+import DayComponent from './components/dnevnik/DayComponent.vue';
+import Health from './components/dnevnik/HealthComponent.vue';
 
 
 
@@ -30,12 +30,17 @@ const router = new VueRouter({
         {
             path: '/dnevnik',
             name: 'dnevnik',
-            component: dnevnik
+            component: Dnevnik
         },
         {
-            path: '/dnevnik/test',
-            name: 'test',
-            component: test
+            path: '/dnevnik/:day',
+            name: 'day',
+            component: DayComponent
+        },
+        {
+            path: '/dnevnik/:day/health',
+            name: 'health',
+            component: Health
         },
         
         
@@ -56,6 +61,6 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
-  components: { dnevnik },
+  components: { Dnevnik },
   router: router
 })
