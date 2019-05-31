@@ -24,18 +24,19 @@ import test from './components/TestComponent.vue';
 
 
 const router = new VueRouter({
-   // mode: 'history',
+    mode: 'history',
     routes: [
+        
         {
-            path: '/',
+            path: '/dnevnik',
             name: 'dnevnik',
             component: dnevnik
         },
         {
-            path: '/test',
+            path: '/dnevnik/test',
             name: 'test',
             component: test
-        }
+        },
         
         
     ]
@@ -55,5 +56,6 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
+  components: { dnevnik },
   router: router
 })

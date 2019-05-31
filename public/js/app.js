@@ -1107,13 +1107,13 @@ Vue.use(VueRouter);*/
 
 
 var router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: [{
-        path: '/',
+        path: '/dnevnik',
         name: 'dnevnik',
         component: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a
     }, {
-        path: '/test',
+        path: '/dnevnik/test',
         name: 'test',
         component: __WEBPACK_IMPORTED_MODULE_1__components_TestComponent_vue___default.a
     }]
@@ -1131,6 +1131,7 @@ var router = new VueRouter({
 
 new Vue({
     el: '#app',
+    components: { dnevnik: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a },
     router: router
 });
 

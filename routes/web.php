@@ -17,8 +17,8 @@ Route::get('/', function () {
 */
 
 
-Route::group(['prefix' => 'dnevnik'], function(){
-	Route::get('/{vue_capture?}', ['as' => 'dnevnik', 'uses' => 'DnevnikController@getDay'])->where('vue_capture', '[\/\w\.-]*');
+Route::group(['prefix' => 'dnevnik'], function(){	
+	Route::get('/{any?}', ['as' => 'dnevnik', 'uses' => 'DnevnikController@getDay'])->where('any', '.*');
 });	
 
 
