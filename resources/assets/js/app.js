@@ -61,6 +61,6 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
-  components: { Dnevnik },
+ // components: { Dnevnik },
   router: router
 })

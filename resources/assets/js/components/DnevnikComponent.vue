@@ -2,16 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <input v-model="id" v-on:keyup.enter="changeId">
-                    <div class="panel-heading">{{ info.name }}</div>
-
+                <div>                                       
                     <div class="panel-body">
-                        {{ info.msg }}
+                        {{ info.days }}
                     </div>
                     <div class="calendar">
-                      <div class="calendar-day" v-for="n in 42">                        
-                        <router-link to="/dnevnik/123">{{n}}</router-link>
+                      <div class="calendar__day" v-for="n in 42" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
+                        <router-link to="/dnevnik/123"> {{ info.days[n-1] }}</router-link>
                       </div>
                       
                     </div>
@@ -31,13 +28,17 @@
     grid-column-gap: 0px;
     grid-row-gap:0px;
   }
-  .calendar-day{
+  .calendar__day{
     border:1px solid;
     margin: -0.5px;
+  } 
+  .calendar__day:hover{
+    border:2px solid green;
   }
-  .calendar-day:hover{
-    border:2px solid blue;
-  }
+
+  .calendar__day_disactive{
+    background-color: grey;
+  } 
   
 </style>
 
@@ -49,6 +50,7 @@
       id: 1
     };
     },
+    
         mounted() {
             console.log('Component mounted.');
             axios
@@ -62,8 +64,19 @@
       .get('/api/dnevnik/' + this.id)
       .then(response => (this.info = response.data))
       .catch(response =>(this.info.msg = 'страница не найдена',this.info.name= 'страница не найдена')); 
-    }
-  }
+    },
+    checkDisactiveDays:function(n){
+      if(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n ) return true;
+      return false
+  },
+  computed: {
+    day:function() {
+      Date = new Date();
+      return Date.getMonth();
+      }
+       
+    }  
+  },  
 
 
 

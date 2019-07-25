@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dnevnik;
+use App\Calendar;
 
-class AjaxDnevnikController extends Controller
+class ApiDnevnikController extends Controller
 {
+
+public function getData(Calendar $Calendar)
+{
+ //$post[0]['test']= $Calendar->getThisMonth();
+ $data[0]['days']= $Calendar->getBlockDays();
+ return $data[0];
+}
+
 
 public function getDay(Dnevnik $Dnevnik, Request $request)
 {
  $id = $request->route('id');				
  $post = $Dnevnik->getPost($id);
- 		
  return $post[0];
 }
-
-
 
 
 public function Post(Post $Post, Request $request )

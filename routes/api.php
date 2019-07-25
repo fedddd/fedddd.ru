@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/dnevnik/{id}', ['as' => 'ajaxDnevnik', 'uses' => 'AjaxDnevnikController@getDay'])->where(['id' => '[0-9]+']);;
+Route::get('/dnevnik/{id}', ['as' => 'apiDnevnik', 'uses' => 'ApiDnevnikController@getData'])->where(['id' => '[0-9]+']);;
 
