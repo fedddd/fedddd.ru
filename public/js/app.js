@@ -47562,7 +47562,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       info: null,
-      id: 1
+      id: 1,
+      path: '123'
     };
   },
   mounted: function mounted() {
@@ -47585,17 +47586,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return _this2.info.msg = 'страница не найдена', _this2.info.name = 'страница не найдена';
       });
     },
+
     checkDisactiveDays: function checkDisactiveDays(n) {
       if (this.info.days[n - 1] < 20 && n > 28 || this.info.days[n - 1] > n) return true;
       return false;
-    },
-    computed: {
-      day: function day() {
-        Date = new Date();
-        return Date.getMonth();
-      }
-
     }
+  },
+  computed: {
+    day: function day() {
+      Date = new Date();
+      return Date.getMonth();
+    },
+    getPath: function getPath() {
+      var path = this.info.days.map(function (day) {
+        return '/dnevnik/' + day;
+      });
+      return path;
+    }
+
   }
 
 });
@@ -47627,11 +47635,12 @@ var render = function() {
               return _c(
                 "div",
                 {
+                  key: n,
                   staticClass: "calendar__day",
                   class: { calendar__day_disactive: _vm.checkDisactiveDays(n) }
                 },
                 [
-                  _c("router-link", { attrs: { to: "/dnevnik/123" } }, [
+                  _c("router-link", { attrs: { to: _vm.getPath[n - 1] } }, [
                     _vm._v(" " + _vm._s(_vm.info.days[n - 1]))
                   ])
                 ],
@@ -47853,7 +47862,7 @@ if (false) {
 /* 55 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\vendor\\win32-x64-64\\binding.node\nNode Sass could not find a binding for your current environment: Windows 64-bit with Node.js 10.x\n\nFound bindings for the following environments:\n  - Windows 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\lib\\binding.js:15:13)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\lib\\index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:778:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (internal/modules/cjs/helpers.js:25:18)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\sass-loader\\lib\\loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:778:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (internal/modules/cjs/helpers.js:25:18)\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:18:17)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at runLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:172:11\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:32:11)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at runLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:365:2)\n    at NormalModule.doBuild (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:182:3)\n    at NormalModule.build (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:275:15)\n    at Compilation.buildModule (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\Compilation.js:157:10)\n    at moduleFactory.create (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\Compilation.js:460:10)\n    at factory (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:94:13)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\tapable\\lib\\Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\tapable\\lib\\Tapable.js:272:13)\n    at resolver (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:69:10)\n    at process.nextTick (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:196:7)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
 
 /***/ })
 /******/ ]);

@@ -10,9 +10,17 @@ protected $table = 'dnevnik';
 public $timestamps = false;
 
 
-/*
- *  Получает пост по id
- */
+public function getDay($day,$month,$year)
+{
+
+$dayData = self::where(['day'=> $day,'month'=>$month,'year'=>$year])->get();
+
+return $dayData;
+}
+
+
+
+
 public function getPost($id)
 {
 
@@ -22,9 +30,6 @@ return $post;
 }
 
 
-/*
- *  Получает посты по теме
- */
 public function getTema($tema)
 {
  $post = self::join('menu', 'tema', '=', 'section_id' )->where('code', $tema)->get();
@@ -32,9 +37,7 @@ public function getTema($tema)
 }
 
 
-/*
- *  Получает посты по подтеме
- */
+
 public function getPodtema($podtema)
 {
  $post = self::join('menu', 'podtema', '=', 'section_id' )->where('code', $podtema)->get();
@@ -43,9 +46,7 @@ public function getPodtema($podtema)
 
 
 
-/*
- *  Получает  все посты
- */
+
 public function getAllPost(){
  $post = self::all();
 

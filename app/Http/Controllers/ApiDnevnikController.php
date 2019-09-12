@@ -19,9 +19,14 @@ public function getData(Calendar $Calendar)
 
 public function getDay(Dnevnik $Dnevnik, Request $request)
 {
- $id = $request->route('id');				
- $post = $Dnevnik->getPost($id);
- return $post[0];
+ $data = $request->route('data');
+ $data = explode("-",$data);
+ $day = $data[0];
+ $month = $data[1];
+ $year =	$data[2];			
+ $post = $Dnevnik->getDay($day,$month,$year);
+ 
+ return $post;
 }
 
 

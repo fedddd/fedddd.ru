@@ -7,8 +7,8 @@
                         {{ info.days }}
                     </div>
                     <div class="calendar">
-                      <div class="calendar__day" v-for="n in 42" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
-                        <router-link to="/dnevnik/123"> {{ info.days[n-1] }}</router-link>
+                      <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
+                        <router-link :to =getPath[n-1]> {{ info.days[n-1] }}</router-link>
                       </div>
                       
                     </div>
@@ -47,9 +47,11 @@
     data() {
     return {
       info: null,
-      id: 1
+      id: 1,
+      path:'123'
     };
     },
+    
     
         mounted() {
             console.log('Component mounted.');
@@ -65,20 +67,29 @@
       .then(response => (this.info = response.data))
       .catch(response =>(this.info.msg = 'страница не найдена',this.info.name= 'страница не найдена')); 
     },
+    
+
     checkDisactiveDays:function(n){
       if(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n ) return true;
       return false
+    },
   },
   computed: {
     day:function() {
       Date = new Date();
       return Date.getMonth();
-      }
-       
+      },
+    getPath:function() { 
+      let path =   this.info.days.map(function(day){return '/dnevnik/'+day});
+      return path;
+      },  
+    
+  
+
     }  
-  },  
-
-
+   
+   
+   
 
     }
 </script>
