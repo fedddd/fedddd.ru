@@ -8,19 +8,16 @@ class Calendar
      return 'тест календарь';
   }
 
-  public function getThisMonth()
+  public function getMonthByNumber($month)
   {
-    $month = date("n");
     $textMonth = array("","Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
           "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь");
     return $textMonth[$month];
   }
 
-  public function getBlockDays()
+  public function getBlockDays($month,$year)
   {
-    $month = date('m');
-    $year =date('Y');
-
+    
     //порядковый номер дня недели для первого числа заданного месяца
     $w = date("w",mktime( 0,0,0,$month,0,$year)) - 1;
     if($w<0){

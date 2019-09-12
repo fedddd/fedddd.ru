@@ -47557,34 +47557,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       info: null,
-      id: 1,
-      path: '123'
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear()
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    console.log('Component mounted.');
-    axios.get('/api/dnevnik/' + this.id).then(function (response) {
-      return _this.info = response.data;
-    });
+  created: function created() {
+    console.log('Component created.');
+    this.getMonth();
   },
 
 
   methods: {
-    changeId: function changeId() {
-      var _this2 = this;
+    getMonth: function getMonth() {
+      var _this = this;
 
-      axios.get('/api/dnevnik/' + this.id).then(function (response) {
-        return _this2.info = response.data;
-      }).catch(function (response) {
-        return _this2.info.msg = 'страница не найдена', _this2.info.name = 'страница не найдена';
+      axios.get('/api/dnevnik/' + this.month + '/' + this.year).then(function (response) {
+        return _this.info = response.data;
       });
+    },
+
+    nextMonth: function nextMonth() {
+      if (this.month == 12) {
+        this.month = 1;
+        this.year++;
+      } else {
+        this.month++;
+      }
+
+      this.getMonth();
+    },
+    prevMonth: function prevMonth() {
+      if (this.month == 1) {
+        this.month = 12;
+        this.year--;
+      } else {
+        this.month--;
+      }
+
+      this.getMonth();
     },
 
     checkDisactiveDays: function checkDisactiveDays(n) {
@@ -47620,12 +47637,18 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
         _c("div", [
+          _c("button", { on: { click: _vm.prevMonth } }, [
+            _vm._v("предыдущий месяц")
+          ]),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.nextMonth } }, [
+            _vm._v("следующий месяц")
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.info.days) +
-                "\n                "
-            )
+            _c("h3", [
+              _vm._v(_vm._s(_vm.info.month) + " " + _vm._s(_vm.info.year))
+            ])
           ]),
           _vm._v(" "),
           _c(

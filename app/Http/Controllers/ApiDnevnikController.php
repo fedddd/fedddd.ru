@@ -9,10 +9,14 @@ use App\Calendar;
 class ApiDnevnikController extends Controller
 {
 
-public function getData(Calendar $Calendar)
+public function getData(Calendar $Calendar, Request $request)
 {
- //$post[0]['test']= $Calendar->getThisMonth();
- $data[0]['days']= $Calendar->getBlockDays();
+   $month = $request->route('month');
+   $year= $request->route('year');
+
+ $data[0]['days']= $Calendar->getBlockDays($month,$year);
+ $data[0]['month']=$Calendar->getMonthByNumber($month);
+ $data[0]['year']= $year;
  return $data[0];
 }
 

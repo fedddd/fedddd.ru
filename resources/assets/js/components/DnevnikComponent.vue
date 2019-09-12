@@ -2,9 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div>                                       
+                <div> 
+                  <button @click="prevMonth">предыдущий месяц</button> 
+                  <button @click="nextMonth">следующий месяц</button>                                                        
                     <div class="panel-body">
-                        {{ info.days }}
+                        <h3>{{ info.month }} {{ info.year }}</h3>
                     </div>
                     <div class="calendar">
                       <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
@@ -47,28 +49,52 @@
     data() {
     return {
       info: null,
-      id: 1,
-      path:'123'
+      month: new Date().getMonth()+1,
+      year:new Date().getFullYear()
     };
     },
     
     
-        mounted() {
-            console.log('Component mounted.');
-            axios
-      .get('/api/dnevnik/' + this.id)
-      .then(response => (this.info = response.data));
+        created() {
+            console.log('Component created.');
+            this.getMonth();
         },
+        
+        
+
+        
 
    methods: {
-    changeId: function () {
-           axios
-      .get('/api/dnevnik/' + this.id)
-      .then(response => (this.info = response.data))
-      .catch(response =>(this.info.msg = 'страница не найдена',this.info.name= 'страница не найдена')); 
+    getMonth: function(){
+       axios
+      .get('/api/dnevnik/' + this.month +'/'+this.year)
+      .then(response => (this.info = response.data));
+    },
+
+    nextMonth: function(){
+       if(this.month==12) { 
+         this.month= 1;
+         this.year++;
+       }else{
+         this.month++
+       } 
+
+       this.getMonth();
+    },
+    prevMonth: function(){
+       if(this.month==1) { 
+         this.month= 12;
+         this.year--;
+       }else{
+         this.month--
+       } 
+
+       this.getMonth();
     },
     
-
+    
+  
+    
     checkDisactiveDays:function(n){
       if(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n ) return true;
       return false
