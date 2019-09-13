@@ -1,27 +1,33 @@
 <template>
     <div class="container">
-        {{day}}
+        {{info.msg}}
     </div>
 </template>
 
 <script>
-    export default {
+   export default {
     data() {
      return {
-             day:"123"
+             date:"",
+             info:""            
             }
     },
     created: function() {
-      var day = this.$route.params.day;
-
-      this.day = day;
+      var date = this.$route.params.date;
+      this.date=date;   
+      this.getDayEvent(date);
+    },
+    
+    methods: {
+       getDayEvent: function(date){
+          axios
+      .get('/api/dnevnik/day/' + date)
+      .then(response => (this.info = response.data))
+      .catch(response=>(this.info=""));
+       },
     }
-
        
 
-   
 
-
-
-    }
+  }
 </script>

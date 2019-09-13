@@ -33,7 +33,7 @@ const router = new VueRouter({
             component: Dnevnik
         },
         {
-            path: '/dnevnik/:day',
+            path: '/dnevnik/:date',
             name: 'day',
             component: DayComponent
         },

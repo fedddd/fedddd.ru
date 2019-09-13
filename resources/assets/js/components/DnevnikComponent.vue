@@ -6,11 +6,13 @@
                   <button @click="prevMonth">предыдущий месяц</button> 
                   <button @click="nextMonth">следующий месяц</button>                                                        
                     <div class="panel-body">
-                        <h3>{{ info.month }} {{ info.year }}</h3>
+                        <h3>{{ info.monthText }} {{ info.year }}</h3>
                     </div>
                     <div class="calendar">
+                      
                       <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
-                        <router-link :to =getPath[n-1]> {{ info.days[n-1] }}</router-link>
+                        <router-link :to =getPath[n-1] class="calendar_router-link"> </router-link>
+                        <span>{{ info.days[n-1] }}</span>
                       </div>
                       
                     </div>
@@ -33,14 +35,27 @@
   .calendar__day{
     border:1px solid;
     margin: -0.5px;
+    position: relative;
   } 
-  .calendar__day:hover{
+   .calendar__day:hover:not(.calendar__day_disactive){
     border:2px solid green;
   }
 
   .calendar__day_disactive{
     background-color: grey;
-  } 
+  }
+
+  .calendar_router-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  .calendar__day_disactive>.calendar_router-link{
+     display:none;   
+  }
   
 </style>
 
@@ -78,9 +93,9 @@
        }else{
          this.month++
        } 
-
        this.getMonth();
     },
+
     prevMonth: function(){
        if(this.month==1) { 
          this.month= 12;
@@ -91,22 +106,28 @@
 
        this.getMonth();
     },
-    
-    
-  
-    
+     
     checkDisactiveDays:function(n){
       if(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n ) return true;
       return false
     },
   },
+
+
   computed: {
     day:function() {
       Date = new Date();
       return Date.getMonth();
       },
     getPath:function() { 
-      let path =   this.info.days.map(function(day){return '/dnevnik/'+day});
+      let month=this.info.month;
+      let year=this.info.year;
+      
+      let path =   this.info.days.map(
+        function(day){
+          return '/dnevnik/'+day + '-' + month +'-' + year;
+          }
+        );
       return path;
       },  
     

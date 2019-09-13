@@ -15,7 +15,8 @@ public function getData(Calendar $Calendar, Request $request)
    $year= $request->route('year');
 
  $data[0]['days']= $Calendar->getBlockDays($month,$year);
- $data[0]['month']=$Calendar->getMonthByNumber($month);
+ $data[0]['monthText']=$Calendar->getMonthByNumber($month);
+ $data[0]['month']=$month;
  $data[0]['year']= $year;
  return $data[0];
 }
@@ -29,7 +30,7 @@ public function getDay(Dnevnik $Dnevnik, Request $request)
  $month = $data[1];
  $year =	$data[2];			
  $post = $Dnevnik->getDay($day,$month,$year);
- 
+ if(isset($post[0])) $post=$post[0];
  return $post;
 }
 

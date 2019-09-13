@@ -1116,7 +1116,7 @@ var router = new VueRouter({
         name: 'dnevnik',
         component: __WEBPACK_IMPORTED_MODULE_0__components_DnevnikComponent_vue___default.a
     }, {
-        path: '/dnevnik/:day',
+        path: '/dnevnik/:date',
         name: 'day',
         component: __WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue___default.a
     }, {
@@ -47159,7 +47159,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n}\n.calendar__day[data-v-38472d82]:hover{\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n} \n\n", ""]);
+exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n  position: relative;\n}\n.calendar__day[data-v-38472d82]:hover:not(.calendar__day_disactive){\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n}\n.calendar_router-link[data-v-38472d82] {\n  display: block;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.calendar__day_disactive>.calendar_router-link[data-v-38472d82]{\n   display:none;\n}\n\n", ""]);
 
 // exports
 
@@ -47559,6 +47559,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47590,9 +47605,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       } else {
         this.month++;
       }
-
       this.getMonth();
     },
+
     prevMonth: function prevMonth() {
       if (this.month == 1) {
         this.month = 12;
@@ -47609,14 +47624,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return false;
     }
   },
+
   computed: {
     day: function day() {
       Date = new Date();
       return Date.getMonth();
     },
     getPath: function getPath() {
+      var month = this.info.month;
+      var year = this.info.year;
+
       var path = this.info.days.map(function (day) {
-        return '/dnevnik/' + day;
+        return '/dnevnik/' + day + '-' + month + '-' + year;
       });
       return path;
     }
@@ -47647,7 +47666,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "panel-body" }, [
             _c("h3", [
-              _vm._v(_vm._s(_vm.info.month) + " " + _vm._s(_vm.info.year))
+              _vm._v(_vm._s(_vm.info.monthText) + " " + _vm._s(_vm.info.year))
             ])
           ]),
           _vm._v(" "),
@@ -47663,9 +47682,12 @@ var render = function() {
                   class: { calendar__day_disactive: _vm.checkDisactiveDays(n) }
                 },
                 [
-                  _c("router-link", { attrs: { to: _vm.getPath[n - 1] } }, [
-                    _vm._v(" " + _vm._s(_vm.info.days[n - 1]))
-                  ])
+                  _c("router-link", {
+                    staticClass: "calendar_router-link",
+                    attrs: { to: _vm.getPath[n - 1] }
+                  }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.info.days[n - 1]))])
                 ],
                 1
               )
@@ -47750,14 +47772,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      day: "123"
+      date: "",
+      info: ""
     };
   },
 
   created: function created() {
-    var day = this.$route.params.day;
+    var date = this.$route.params.date;
+    this.date = date;
+    this.getDayEvent(date);
+  },
 
-    this.day = day;
+  methods: {
+    getDayEvent: function getDayEvent(date) {
+      var _this = this;
+
+      axios.get('/api/dnevnik/day/' + date).then(function (response) {
+        return _this.info = response.data;
+      }).catch(function (response) {
+        return _this.info = "";
+      });
+    }
   }
 
 });
@@ -47771,7 +47806,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._v("\n    " + _vm._s(_vm.day) + "\n")
+    _vm._v("\n    " + _vm._s(_vm.info.msg) + "\n")
   ])
 }
 var staticRenderFns = []
