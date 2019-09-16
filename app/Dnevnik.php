@@ -19,6 +19,19 @@ return $dayData;
 }
 
 
+public function getMonth($month,$year)
+{
+  $post = self::where(['month'=>$month,'year'=>$year])->get(); 
+  return $post;
+}
+
+
+
+
+
+
+
+
 
 
 public function getPost($id)

@@ -47159,7 +47159,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n  position: relative;\n}\n.calendar__day[data-v-38472d82]:hover:not(.calendar__day_disactive){\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n}\n.calendar__day_datenow[data-v-38472d82]{\n  background-color: #ffd586;\n}\n.calendar_router-link[data-v-38472d82] {\n  display: block;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.calendar__day_disactive>.calendar_router-link[data-v-38472d82]{\n   display:none;\n}\n\n", ""]);
+exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n  position: relative;\n}\n.calendar__day[data-v-38472d82]:hover:not(.calendar__day_disactive){\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n}\n.calendar__day_datenow[data-v-38472d82]{\n  background-color: #ffd586;\n}\n.calendar_router-link[data-v-38472d82] {\n  display: block;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.calendar__day_disactive>.calendar_router-link[data-v-38472d82]{\n   display:none;\n}\n\n\n", ""]);
 
 // exports
 
@@ -47577,6 +47577,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47623,15 +47626,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     checkDisactiveDays: function checkDisactiveDays(n) {
-      if (this.info.days[n - 1] < 20 && n > 28 || this.info.days[n - 1] > n) return true;
+      if (this.info.days[n - 1].day < 20 && n > 28 || this.info.days[n - 1].day > n) return true;
       return false;
     },
 
     checkDateNow: function checkDateNow(n) {
-      if (!(this.info.days[n - 1] < 20 && n > 28 || this.info.days[n - 1] > n)) {
+      if (!(this.info.days[n - 1].day < 20 && n > 28 || this.info.days[n - 1].day > n)) {
         var day = new Date().getDate();
         var month = new Date().getMonth() + 1;
-        if (this.info.days[n - 1] == day && this.month == month) return true;
+        if (this.info.days[n - 1].day == day && this.month == month) return true;
       };
     }
 
@@ -47647,7 +47650,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var year = this.info.year;
 
       var path = this.info.days.map(function (day) {
-        return '/dnevnik/' + day + '-' + month + '-' + year;
+        return '/dnevnik/' + day.day + '-' + month + '-' + year;
       });
       return path;
     }
@@ -47702,7 +47705,10 @@ var render = function() {
                     attrs: { to: _vm.getPath[n - 1] }
                   }),
                   _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.info.days[n - 1]))])
+                  _c("span", [_vm._v(_vm._s(_vm.info.days[n - 1].day))]),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(_vm.info.days[n - 1].data.msg))])
                 ],
                 1
               )
