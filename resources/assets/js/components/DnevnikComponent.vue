@@ -10,7 +10,7 @@
                     </div>
                     <div class="calendar">
                       
-                      <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n)}>                        
+                      <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n),calendar__day_datenow:checkDateNow(n)}>                        
                         <router-link :to =getPath[n-1] class="calendar_router-link"> </router-link>
                         <span>{{ info.days[n-1] }}</span>
                       </div>
@@ -43,6 +43,9 @@
 
   .calendar__day_disactive{
     background-color: grey;
+  }
+  .calendar__day_datenow{
+    background-color: #ffd586;
   }
 
   .calendar_router-link {
@@ -111,6 +114,17 @@
       if(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n ) return true;
       return false
     },
+
+    checkDateNow:function(n){
+      if(!(this.info.days[n-1]<20 && n>28 || this.info.days[n-1]>n) ){
+        let day=new Date().getDate();
+        let month =new Date().getMonth()+1; 
+        if(this.info.days[n-1]==day && this.month==month) 
+         return true
+      };
+          
+    },
+
   },
 
 
