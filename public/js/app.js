@@ -47166,7 +47166,7 @@ exports = module.exports = __webpack_require__(44)(false);
 
 
 // module
-exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n  position: relative;\n}\n.calendar__day[data-v-38472d82]:hover:not(.calendar__day_disactive){\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n}\n.calendar__day_datenow[data-v-38472d82]{\n  background-color: #ffd586;\n}\n.calendar_router-link[data-v-38472d82] {\n  display: block;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.calendar__day_disactive>.calendar_router-link[data-v-38472d82]{\n   display:none;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.calendar[data-v-38472d82]{\n  width: 700px;\n  height: 600px;\n  display:grid;\n  grid-template-columns: repeat(7,1fr);\n  grid-template-rows: repeat(6,1fr);\n  grid-column-gap: 0px;\n  grid-row-gap:0px;\n}\n.calendar__day[data-v-38472d82]{\n  border:1px solid;\n  margin: -0.5px;\n  position: relative;\n}\n.calendar__day[data-v-38472d82]:hover:not(.calendar__day_disactive){\n  border:2px solid green;\n}\n.calendar__day_disactive[data-v-38472d82]{\n  background-color: grey;\n}\n.calendar__day_datenow[data-v-38472d82]{\n  background-color: #ffd586;\n}\n.calendar_router-link[data-v-38472d82] {\n  display: block;\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.calendar__day_disactive>.calendar_router-link[data-v-38472d82]{\n   display:none;\n}\n.calendar__prevMonth[data-v-38472d82]{\n  width:0px;\n  height: 0px;\n  border: 10px solid transparent;\n  border-right: 10px solid;\n  cursor: pointer;\n  display: inline-block;\n}\n.calendar__nextMonth[data-v-38472d82]{\n  width:0px;\n  height: 0px;\n  border: 10px solid transparent;\n  border-left: 10px solid;\n  cursor: pointer;\n  display: inline-block;\n}\n\n\n", ""]);
 
 // exports
 
@@ -47587,6 +47587,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47682,18 +47700,22 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
         _c("div", [
-          _c("button", { on: { click: _vm.prevMonth } }, [
-            _vm._v("предыдущий месяц")
-          ]),
-          _vm._v(" "),
-          _c("button", { on: { click: _vm.nextMonth } }, [
-            _vm._v("следующий месяц")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("h3", [
-              _vm._v(_vm._s(_vm.info.monthText) + " " + _vm._s(_vm.info.year))
-            ])
+          _c("h3", { attrs: { align: "center" } }, [
+            _c("div", {
+              staticClass: "calendar__prevMonth",
+              on: { click: _vm.prevMonth }
+            }),
+            _vm._v(
+              "\n                       " +
+                _vm._s(_vm.info.monthText) +
+                " " +
+                _vm._s(_vm.info.year) +
+                "\n                      "
+            ),
+            _c("div", {
+              staticClass: "calendar__nextMonth",
+              on: { click: _vm.nextMonth }
+            })
           ]),
           _vm._v(" "),
           _c(

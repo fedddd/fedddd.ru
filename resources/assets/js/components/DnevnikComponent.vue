@@ -2,12 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div> 
-                  <button @click="prevMonth">предыдущий месяц</button> 
-                  <button @click="nextMonth">следующий месяц</button>                                                        
-                    <div class="panel-body">
-                        <h3>{{ info.monthText }} {{ info.year }}</h3>
-                    </div>
+                <div>                                                                          
+                        
+                        <h3 align="center">
+                          <div class="calendar__prevMonth" @click="prevMonth"></div>
+                           {{ info.monthText }} {{ info.year }}
+                          <div class="calendar__nextMonth" @click="nextMonth"></div>
+                        </h3>
+                        
                      <div class="calendar"> 
                      
                       <div class="calendar__day" v-for="n in 42" v-bind:key="n" v-bind:class={calendar__day_disactive:checkDisactiveDays(n),calendar__day_datenow:checkDateNow(n)}>                                  
@@ -60,6 +62,22 @@
   }
   .calendar__day_disactive>.calendar_router-link{
      display:none;   
+  }
+  .calendar__prevMonth{
+    width:0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-right: 10px solid;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .calendar__nextMonth{
+    width:0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-left: 10px solid;
+    cursor: pointer;
+    display: inline-block;
   }
 
   
