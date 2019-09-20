@@ -19,6 +19,26 @@ return $dayData;
 }
 
 
+public function setDay($day,$month,$year,$msg)
+{ 
+ $newday= self::where(['day'=> $day,'month'=>$month,'year'=>$year]);
+ $checkDay=$newday->get();
+ if($checkDay->isEmpty()){
+   $newday= new self;
+   $newday->day=$day;
+   $newday->month=$month;
+   $newday->year=$year;
+   $newday->msg=$msg;
+   $newday->save();
+   $result[0]="insert";  
+ }else{
+   $newday->update(['day'=> $day,'month'=>$month,'year'=>$year,'msg'=>$msg]);
+   $result[0]="update";
+ }
+ return $result;
+}
+
+
 public function getMonth($month,$year)
 {
   $post = self::where(['month'=>$month,'year'=>$year])->get(); 

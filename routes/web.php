@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'dnevnik'], function(){	
-	Route::get('/{any?}', ['as' => 'dnevnik', 'uses' => 'DnevnikController@getDay'])->where('any', '.*');
+  Route::get('/{any?}', ['as' => 'dnevnik','middleware'=>'auth', 'uses' => 'DnevnikController@getDay'])->where('any', '.*');
 });	
 
 

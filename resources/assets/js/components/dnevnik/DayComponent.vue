@@ -1,6 +1,8 @@
 <template>
     <div class="container">
+        <router-link :to=getPathInsert>Изменить</router-link>
         {{info.msg}}
+        
     </div>
 </template>
 
@@ -9,7 +11,7 @@
     data() {
      return {
              date:"",
-             info:""            
+             info:"",           
             }
     },
     created: function() {
@@ -25,7 +27,13 @@
       .then(response => (this.info = response.data))
       .catch(response=>(this.info=""));
        },
-    }
+    },
+
+    computed: {  
+      getPathInsert:function() {    
+        return this.date+"/insert";
+      }
+    }, 
        
 
 

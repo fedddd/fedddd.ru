@@ -1087,6 +1087,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_dnevnik_DayComponent_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_dnevnik_InsertComponent_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_dnevnik_InsertComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_dnevnik_InsertComponent_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1109,6 +1111,7 @@ Vue.use(VueRouter);*/
 
 
 
+
 var router = new VueRouter({
     mode: 'history',
     routes: [{
@@ -1123,6 +1126,10 @@ var router = new VueRouter({
         path: '/dnevnik/:day/health',
         name: 'health',
         component: __WEBPACK_IMPORTED_MODULE_2__components_dnevnik_HealthComponent_vue___default.a
+    }, {
+        path: '/dnevnik/:day/insert',
+        name: 'insert',
+        component: __WEBPACK_IMPORTED_MODULE_3__components_dnevnik_InsertComponent_vue___default.a
     }]
 });
 
@@ -47589,6 +47596,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       year: new Date().getFullYear()
     };
   },
+
+
+  props: ['checkLogin'],
+
   created: function created() {
     console.log('Component created.');
     this.getMonth();
@@ -47789,6 +47800,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -47814,6 +47827,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return _this.info = "";
       });
     }
+  },
+
+  computed: {
+    getPathInsert: function getPathInsert() {
+      return this.date + "/insert";
+    }
   }
 
 });
@@ -47826,9 +47845,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm._v("\n    " + _vm._s(_vm.info.msg) + "\n")
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("router-link", { attrs: { to: _vm.getPathInsert } }, [
+        _vm._v("Изменить")
+      ]),
+      _vm._v("\n    " + _vm._s(_vm.info.msg) + "\n    \n")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -47942,6 +47969,151 @@ if (false) {
 /***/ (function(module, exports) {
 
 throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\vendor\\win32-x64-64\\binding.node\nNode Sass could not find a binding for your current environment: Windows 64-bit with Node.js 10.x\n\nFound bindings for the following environments:\n  - Windows 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\lib\\binding.js:15:13)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\node-sass\\lib\\index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:778:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (internal/modules/cjs/helpers.js:25:18)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\sass-loader\\lib\\loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:778:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)\n    at Module.load (internal/modules/cjs/loader.js:653:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:585:3)\n    at Module.require (internal/modules/cjs/loader.js:692:17)\n    at require (internal/modules/cjs/helpers.js:25:18)\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:18:17)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at runLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:172:11\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:32:11)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:176:18\n    at loadLoader (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\loadLoader.js:47:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at runLoaders (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\loader-runner\\lib\\LoaderRunner.js:365:2)\n    at NormalModule.doBuild (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:182:3)\n    at NormalModule.build (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModule.js:275:15)\n    at Compilation.buildModule (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\Compilation.js:157:10)\n    at moduleFactory.create (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\Compilation.js:460:10)\n    at factory (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:94:13)\n    at C:\\OSPanel\\domains\\fedddd.local\\node_modules\\tapable\\lib\\Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\tapable\\lib\\Tapable.js:272:13)\n    at resolver (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:69:10)\n    at process.nextTick (C:\\OSPanel\\domains\\fedddd.local\\node_modules\\webpack\\lib\\NormalModuleFactory.js:196:7)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+
+/***/ }),
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/dnevnik/InsertComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-614b227a", Component.options)
+  } else {
+    hotAPI.reload("data-v-614b227a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      day: "123",
+      send: {}
+    };
+  },
+
+  props: ['checkLogin'],
+  created: function created() {
+    var day = this.$route.params.day;
+
+    this.day = day;
+  },
+  methods: {
+    sendDay: function sendDay() {
+      axios.post('/api/dnevnik/day/' + this.day, { msg: this.send.msg }).then(function (response) {
+        return alert(response.data);
+      }).catch(function (response) {
+        return alert('Ошибка');
+      });
+    }
+
+  }
+
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h3", [_vm._v(_vm._s(_vm.day) + " " + _vm._s(_vm.checkLogin))]),
+    _vm._v(" "),
+    _c("label", [_vm._v("Сообщение")]),
+    _vm._v(" "),
+    _c("fieldset", { staticClass: "form-group" }, [
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.send.msg,
+            expression: "send.msg"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { placeholder: "Сообщение" },
+        domProps: { value: _vm.send.msg },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.send, "msg", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.sendDay } }, [_vm._v("Сохранить")])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-614b227a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

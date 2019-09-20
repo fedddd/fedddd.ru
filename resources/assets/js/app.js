@@ -20,6 +20,7 @@ Vue.use(VueRouter);*/
 import Dnevnik from './components/DnevnikComponent.vue';
 import DayComponent from './components/dnevnik/DayComponent.vue';
 import Health from './components/dnevnik/HealthComponent.vue';
+import Insert from './components/dnevnik/InsertComponent.vue';
 
 
 
@@ -41,6 +42,11 @@ const router = new VueRouter({
             path: '/dnevnik/:day/health',
             name: 'health',
             component: Health
+        },
+        {
+            path: '/dnevnik/:day/insert',
+            name: 'insert',
+            component: Insert
         },
         
         

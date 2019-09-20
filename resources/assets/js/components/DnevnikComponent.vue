@@ -74,15 +74,14 @@
       year:new Date().getFullYear()
     };
     },
-    
-    
-        created() {
-            console.log('Component created.');
-            this.getMonth();
-        },
-        
-        
 
+    props:['checkLogin'],
+   
+    created() {
+        console.log('Component created.');
+        this.getMonth();
+    },
+        
         
 
    methods: {

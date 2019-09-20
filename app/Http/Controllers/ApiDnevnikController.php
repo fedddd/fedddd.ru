@@ -59,72 +59,19 @@ public function getDay(Dnevnik $Dnevnik, Request $request)
  return $post;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public function Post(Post $Post, Request $request )
+public function setDay(Dnevnik $Dnevnik, Request $request)
 {
-   
- $id = $request->route('id');				
- $post = $Post->getPost($id);		
- $menu = $this->insertMenu();
- 		
- return view('post.post', ['post'=>$post,'menu'=>$menu ]);
-}   
-	
-							
-	
-public function Tema(Post $Post, Request $request )
-{
-   
- $url = $request->url();
- $tema = $request->route('tema');	   
- $post = $Post->getTema($tema);		
- $menu = $this->insertMenu();
- 
- return view('post.tema', ['post'=>$post,'menu'=>$menu, 'url' => $url  ]);
+ $data = $request->route('data');
+ $data = explode("-",$data);
+ $day = $data[0];
+ $month = $data[1];
+ $year =	$data[2];
+ $msg = $request->input('msg');	
+ $post = $Dnevnik->setDay($day,$month,$year,$msg);
+ if(isset($post[0])) $post=$post[0];
+ return $post;
+}
 
-}  
-				
-public function Podtema(Post $Post, Request $request )
-{
-   
- $url = $request->url();
- $podtema = $request->route('podtema');
- $post = $Post->getPodtema($podtema);
- $menu = $this->insertMenu();
- 		
- return view('post.tema', ['post'=>$post,'menu'=>$menu, 'url' => $url  ]);
-} 
-	
-	
-public function allPost(Post $Post, Request $request )
-{
-	
- $url = $request->url();
- $id = $request->route('id');		
- $post = $Post->getAllPost();
- $menu = $this->insertMenu();
-
- return view('post.tema', ['post'=>$post,'menu'=>$menu, 'url' => $url  ]);
-}   
+  
 		
 }
